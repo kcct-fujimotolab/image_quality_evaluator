@@ -1,26 +1,26 @@
 {
-	"SR": [
-		"test/1.png",
-		"test/2.png",
-		"test/3.png",
-		"test/4.png",
-		"test/5.png",
-		"test/6.png"
-	],
-	"Advence": [
-		"test/a1.png",
-		"test/a2.png",
-		"test/a3.png",
-		"test/a4.png",
-		"test/a5.png",
-		"test/a6.png"
-	],
-	"GAN": [
-		"test/b1.jpg",
-		"test/b2.jpg",
-		"test/b3.jpg",
-		"test/b4.jpg",
-		"test/b5.jpg",
-		"test/b6.jpg"
-	]
+    "DCGAN": [
+        "test/DCGAN/4.png",
+        "test/DCGAN/5.png",
+        "test/DCGAN/6.png",
+        "test/DCGAN/2.png",
+        "test/DCGAN/3.png",
+        "test/DCGAN/1.png"
+    ],
+    "SRCNN": [
+        "test/SRCNN/a1.png",
+        "test/SRCNN/a3.png",
+        "test/SRCNN/a2.png",
+        "test/SRCNN/a6.png",
+        "test/SRCNN/a5.png",
+        "test/SRCNN/a4.png"
+    ],
+    "StackGAN": [
+        "test/StackGAN/b5.jpg",
+        "test/StackGAN/b4.jpg",
+        "test/StackGAN/b6.jpg",
+        "test/StackGAN/b3.jpg",
+        "test/StackGAN/b2.jpg",
+        "test/StackGAN/b1.jpg"
+    ]
 }

@@ -1,6 +1,7 @@
 var config;
 var list;
-var step = 0;
+var step;
+var steps;
 var answers = new Array();
 
 
@@ -102,7 +103,7 @@ function select(label){
 	answers.push(label);
 	step++;
 	// 最終ステップならばエンディングへ
-	if (step >= config.steps){
+	if (step >= steps){
 		showEnding();
 		return;
 	}
@@ -169,5 +170,9 @@ $(function(){
 	// 設定ファイルの読み込み
 	config = getConfig();
 	list = getImageList();
+	// ステップ数の初期化
+	var keys = Object.keys(list);
+	steps = list[keys[0]].length / config.number;
+	step = 0;
 	showTitle();
 });

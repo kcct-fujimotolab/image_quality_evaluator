@@ -50,6 +50,7 @@ function getImages(){
 // 送信用データ作成
 function createData(sign, allow){
 	var data = {
+		name: 'sr-dc-sg',
 		sign: sign,
 		allow: allow
 	}

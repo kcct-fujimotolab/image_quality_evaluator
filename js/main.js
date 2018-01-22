@@ -27,11 +27,7 @@ function getImageList(){
 
 // 評価結果送信
 function postData(data){
-	$.ajaxSetup({async: false});
-	var post = $.post(config.url, data);
-	$.ajaxSetup({async: true});
-	console.log(post.status);
-	return post.status;
+	var post = $.post(config.url, data, showAck);
 }
 
 
@@ -126,14 +122,7 @@ function submit(){
 	// プリローダーを表示
 	$('#sending').show();
 	$('#submit-button').prop("disabled", true);
-	var status = postData(data);
-	// ステータスコードが成功なら謝辞へ
-	if (status == 200){
-		showAck();
-	} else {
-		$('#info3').text("送信に失敗しました");
-		$('#info3').addClass('pink-text');
-	}
+	postData(data);
 }
 
 

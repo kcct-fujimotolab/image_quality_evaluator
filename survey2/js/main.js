@@ -48,10 +48,12 @@ function getImages(){
 
 
 // 送信用データ作成
-function createData(sign, allow){
+function createData(sign, age, sex, allow){
 	var data = {
 		name: 'sr-sg2x',
 		sign: sign,
+		age: age,
+		sex: sex,
 		allow: allow
 	}
 	// 配列をオブジェクト形式に変換
@@ -59,6 +61,15 @@ function createData(sign, allow){
 		data['answer' + i] = answers[i];
 	}
 	return data;
+}
+
+
+// 進捗を表示
+function showProgress(){
+	var prog = '(' + (step + 1) + '/' + steps + ')';
+	var long = step * 100 / steps;
+	$('#info2').text(prog);
+	$('#progress').css('width', long + '%');
 }
 
 
@@ -105,20 +116,34 @@ function select(label){
 		return;
 	}
 	setImages();
+	showProgress();
 }
 
 
 // 評価結果送信
 function submit(){
 	var sign = $('#sign').val();
+	var age = $('#age').val();
+	var sex = $('#sex').val();
 	var allow = $("#allow").prop('checked');
 	// 署名入力の確認
 	if ($('#sign').val() == ''){
+		$('#sign').addClass('invalid');
 		$('#info3').text("署名を入力してください");
 		$('#info3').addClass('pink-text');
 		return;
 	}
-	data = createData(sign, allow);
+	if ($('#age').val() == null){
+		$('#info3').text("年齢を選択してください");
+		$('#info3').addClass('pink-text');
+		return;
+	}
+	if ($('#sex').val() == null){
+		$('#info3').text("性別を選択してください");
+		$('#info3').addClass('pink-text');
+		return;
+	}
+	data = createData(sign, age, sex, allow);
 	// console.log(data);
 	// プリローダーを表示
 	$('#sending').show();
@@ -138,6 +163,7 @@ function showTitle(){
 function showForm(){
 	setScreen('screen2');
 	setImages();
+	showProgress();
 }
 
 
@@ -157,6 +183,7 @@ function showAck(){
 // ページ読み込み完了で実行
 $(function(){
 	console.log('ready');
+    $('select').material_select();
 	// 設定ファイルの読み込み
 	config = getConfig();
 	list = getImageList();

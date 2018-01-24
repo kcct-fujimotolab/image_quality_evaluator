@@ -3,9 +3,10 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Image Quality Evaluator</title>
+	<title>画像評価アンケート2</title>
 	<link href="css/materialize.min.css" rel="stylesheet" media="screen,projection">
 	<link href="css/mystyle.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body class="blue-grey darken-4 white-text">
 	<div class="container">
@@ -18,16 +19,25 @@
 
 		<!-- タイトル画面 -->
 		<div id="screen1" class="screen">
-			<h1 class="teal-text text-lighten-3">Image Quality Evaluator</h1>
-			<p id="info1">表示された画像の中から最も画質が良いと思う画像を選択してください。</p>
-			<p>人間が見て良いと感じる画像の生成を目指すため、画質の定義は行いません。主観で評価してください。</p>
+			<h1 class="teal-text text-lighten-3">画像評価アンケート2</h1>
+			<p><i class="tiny material-icons">play_arrow</i>画像生成モデルの性能を評価するために、生成した<span class="amber-text text-accent-1">画像の評価をお願いします</span>。</p>
+			<p><i class="tiny material-icons">play_arrow</i>以下のような画像を生成することを目標としています。</p>
+			<div class="row">
+				<div class="col s6"><img src="img/sample1.png" alt=""></div>
+				<div class="col s6"><img src="img/sample2.png" alt=""></div>
+			</div>
+			<p><i class="tiny material-icons">play_arrow</i>複数枚画像が表示されるので、<span class="amber-text text-accent-1">最もよく生成できていると思われるものを選択してください</span>。</p>
+			<p><i class="tiny material-icons">play_arrow</i>ご回答頂いた内容は<span class="amber-text text-accent-1">卒業研究以外の目的には使用しません</span>。</p>
 			<button id="start-button" class="btn btn-large">開始</button>
 		</div>
 
 
 		<!-- 評価画面 -->
 		<div id="screen2" class="screen">
-			<p id="info2" class="pink-text">最も画質が良いと思う画像をクリックしてください。</p>
+			<div class="progress">
+				<div id="progress" class="determinate" style="width: 0%"></div>
+			</div>
+			<p><span id="info2" class="amber-text text-accent-1">(m/n)</span> 最もよく生成できていると思われる画像をクリックまたはタップしてください。</p>
 			<div id="area" class="row"></div>
 			
 			
@@ -37,15 +47,37 @@
 		<!-- 送信画面 -->
 		<div id="screen3" class="screen">
 			<h1 class="teal-text text-lighten-3">評価完了</h1>
-			<p id="info3">あなたの評価を送信します。署名をお願いします。</p>
+			<p id="info3">あなたの評価を送信します。署名と基礎情報の入力をお願いします。</p>
 			<div class="row">
 				<div class="input-field col s12">
 					<input id="sign" type="text" class="validate">
 					<label for="sign">署名</label>
 				</div>
+				<div class="input-field col s6">
+					<select id="age">
+						<option value="" disabled selected>選択してください</option>
+						<option value="10">10代</option>
+						<option value="20">20代</option>
+						<option value="30">30代</option>
+						<option value="40">40代</option>
+						<option value="50">50代</option>
+						<option value="60">60代</option>
+						<option value="other">その他</option>
+					</select>
+					<label>年齢</label>
+				</div>
+				<div class="input-field col s6">
+					<select id="sex">
+						<option value="" disabled selected>選択してください</option>
+						<option value="M">男性</option>
+						<option value="F">女性</option>
+						<option value="other">その他</option>
+					</select>
+					<label>性別</label>
+				</div>
 				<div class="col s12">
 					<input type="checkbox" class="filled-in" id="allow">
-					<label for="allow">論文謝辞に名前を掲載することを許可する</label>
+					<label for="allow">論文謝辞に名前を掲載することを許可する（任意）</label>
 				</div>
 			</div>
 			<button id="submit-button" class="btn btn-large">送信</button>
